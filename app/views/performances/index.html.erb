@@ -1,4 +1,5 @@
 <% @performances.each do |performance| %>
+  <%= cl_image_tag performance.photo.key, height: 300, width: 400, crop: :fill %>
   <%= performance.title %>
   <%= performance.description %>
   <%= performance.location %>
