@@ -1,12 +1,12 @@
 class PerformancesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :set_performance, only: [:show, :edit, :update]
 
   def index
     @performances = Performance.all
   end
 
   def show
-    @performance = Performance.find(params[:id])
   end
 
   def new
@@ -23,7 +23,23 @@ class PerformancesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @performance.update(performance_params)
+    if @performance.save
+      redirect_to performance_path(@performance)
+    else
+      redirect_to edit_performance_path
+    end
+  end
+
   private
+
+  def set_performance
+    @performance = Performance.find(params[:id])
+  end
 
   def performance_params
     params.require(:performance).permit(:title, :location, :description, :price, :photo)
