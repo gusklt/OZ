@@ -4,3 +4,10 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.card {
+  img {
+    object-fit: cover;
+    width: 100%;
+  }
+}

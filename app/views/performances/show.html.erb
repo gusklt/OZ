@@ -1,4 +1,8 @@
-<%= cl_image_tag @performance.photo.key, height: 300, width: 1500, crop: :fill %>
+<% if @performance.photo.attached? %>
+  <%= cl_image_tag @performance.photo.key, height: 300, width: 1500, crop: :fill %>
+<% else %>
+  <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" width=150 height=150>
+<% end %>
 
 <h3><%= @performance.title %></h3>
 
