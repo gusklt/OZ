@@ -114,11 +114,6 @@ GEM
     msgpack (1.4.2)
     nio4r (2.5.8)
     nokogiri (1.12.3-x86_64-linux)
-<<<<<<< HEAD
-=======
-      racc (~> 1.4)
-    nokogiri (1.12.3-x86_64-linux)
->>>>>>> a67d7807338a7d5151e279c3c5744308d6be863f
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.2.3)
