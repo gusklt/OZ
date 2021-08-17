@@ -6,3 +6,5 @@
 <%= @performance.price %> €
 
 <p><%= @performance.description %></p>
+
+<%= link_to "Delete", @performance, method: :delete, data: { confirm: "Are you sure?" } %>

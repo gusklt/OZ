@@ -1,6 +1,6 @@
 class PerformancesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_performance, only: [:show, :edit, :update]
+  before_action :set_performance, only: [:show, :edit, :update, :destroy]
 
   def index
     @performances = Performance.all
@@ -33,6 +33,11 @@ class PerformancesController < ApplicationController
     else
       redirect_to edit_performance_path
     end
+  end
+
+  def destroy
+    @performance.destroy
+    redirect_to performances_path
   end
 
   private
