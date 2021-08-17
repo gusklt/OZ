@@ -1,0 +1,5 @@
+<%= simple_form_for [@performance, @booking] do |f| %>
+  <%= f.input :date %>
+  <%= f.hidden_field :status, value: 'pending' %>
+  <%= f.submit %>
+<% end %>

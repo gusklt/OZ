@@ -1,7 +1,4 @@
 class BookingsController < ApplicationController
-  def show
-    @booking = Booking.find(params[:id])
-  end
 
   def new
     @booking = Booking.new
@@ -12,13 +9,19 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @performance = Performance.find(params[:performance_id])
     @booking.performance = @performance
-    @booking.save
+    @booking.user = current_user
+
+    if @booking.save
+      redirect_to performances_path
+    else
+      render 'new'
+    end
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:id, :date, :status, :user_id, :performance_id)
+    params.require(:booking).permit(:id, :date, :status)
 
   end
 end
