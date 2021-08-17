@@ -5,8 +5,123 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+Booking.delete_all
+if Booking.count.zero?
+  puts "All booking have been destroy"
+else
+  puts "error deleting bookings"
+end
+
+Performance.delete_all
+if Performance.count.zero?
+  puts "All Performance have been deleted"
+else
+  puts "error deleting performances"
+end
 
 User.delete_all
-puts "All user have been destroy"
+if User.count.zero?
+  puts "All user have been destroy"
+else
+  puts "error deleting users"
+end
 
-user1 = User.new()
+user1 = User.create(
+  email: 'test@test.fr',
+  username: 'test',
+  password: '123456',
+  password_confirmation: '123456'
+)
+
+user2 = User.create(
+  email: 'test@poudlard.com',
+  username: 'harryp',
+  password: 'gryfondor',
+  password_confirmation: 'gryfondor'
+)
+
+user3 = User.create(
+  email: 'pheobe@charmed.com',
+  username: 'pheobe',
+  password: 'halliwell',
+  password_confirmation: 'halliwell'
+)
+
+user4 = User.create(
+  email: 'piper@charmed.com',
+  username: 'piper',
+  password: 'halliwell',
+  password_confirmation: 'halliwell'
+)
+if User.count == 4
+  puts "4 users created"
+else
+  puts "error creating users"
+end
+
+users = [user1, user2, user3, user4]
+performances = []
+10.times do
+  performance = Performance.new(
+    title: Faker::TvShows::StrangerThings.quote,
+    description: Faker::Lorem.paragraphs(number: 2),
+    location: Faker::Address.city,
+    price: rand(25..50),
+  )
+  performance.user = users.sample
+  performance.save
+  performances << performance
+end
+
+if Performance.count == 10
+  puts "10 performances created"
+else
+  puts "error creating performances"
+end
+
+booking1 = Booking.new(
+  date: DateTime.now,
+  status: ['accepted', 'pending', 'declined'].sample,
+  performance_id: 2
+)
+booking1.user = user1
+booking1.performance = performances.sample
+booking1.save
+
+booking2 = Booking.new(
+  date: DateTime.now,
+  status: ['accepted', 'pending', 'declined'].sample,
+  user_id: 2,
+  performance_id: 3
+)
+booking2.user = user2
+booking2.performance = performances.sample
+booking2.save
+
+booking3 = Booking.new(
+  date: DateTime.now,
+  status: ['accepted', 'pending', 'declined'].sample,
+  user_id: 3,
+  performance_id: 5
+)
+booking3.user = user3
+booking3.performance = performances.sample
+booking3.save
+
+booking4 = Booking.new(
+  date: DateTime.now,
+  status: ['accepted', 'pending', 'declined'].sample,
+  user_id: 4,
+  performance_id: 2
+)
+booking4.user = user4
+booking4.performance = performances.sample
+booking4.save
+
+if Booking.count == 4
+  puts "4 bookings created"
+else
+  puts "error creating bookings"
+end
