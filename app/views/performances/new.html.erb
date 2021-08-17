@@ -1,0 +1,9 @@
+<h2> Be magic !</h2>
+<%= simple_form_for @performance do |f| %>
+  <%= f.input :title %>
+  <%= f.input :location %>
+  <%= f.input :price %>
+  <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
+  <%= f.button :submit %>
+<% end %>
