@@ -24,6 +24,26 @@ ActiveRecord::Schema.define(version: 2021_08_17_135713) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["performance_id"], name: "index_bookings_on_performance_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+
+   create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "performances", force: :cascade do |t|
@@ -53,5 +73,6 @@ ActiveRecord::Schema.define(version: 2021_08_17_135713) do
 
   add_foreign_key "bookings", "performances"
   add_foreign_key "bookings", "users"
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "performances", "users"
 end
