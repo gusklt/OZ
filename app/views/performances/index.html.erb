@@ -1,6 +1,15 @@
-<% @performances.each do |performance| %>
-  <%= performance.title %>
-  <%= performance.description %>
-  <%= performance.location %>
-  <%= performance.average_rating %>
-<% end %>
+<div class="cards">
+  <% @performances.each do |performance| %>
+  <div class="card" style="width: 18rem;">
+    <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
+    <div class="card-body">
+      <h5 class="card-title"><%= performance.title %></h5>
+      <p class="card-text"><%= performance.description %></p>
+      <%= performance.location %>
+      <%= performance.price %>
+
+      <%= performance.average_rating %>
+    </div>
+  </div>
+  <% end %>
+</div>
