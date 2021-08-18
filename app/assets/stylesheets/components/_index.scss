@@ -5,3 +5,16 @@
 @import "footer";
 @import "banner";
 @import "card";
+@import "map";
+
+.index_container {
+  display: flex;
+}
+
+.cards {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 70vw;
+}
