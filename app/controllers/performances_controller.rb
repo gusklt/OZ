@@ -4,6 +4,14 @@ class PerformancesController < ApplicationController
 
   def index
     @performances = Performance.all
+
+    # the `geocoded` scope filters only perforlances with coordinates (latitude & longitude)
+    @markers = @performances.geocoded.map do |performance|
+      {
+        lat: performance.latitude,
+        lng: performance.longitude
+      }
+    end
   end
 
   def show
