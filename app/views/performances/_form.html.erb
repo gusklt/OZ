@@ -1,6 +1,6 @@
 <%= simple_form_for performance do |f| %>
   <%= f.input :title %>
-  <%= f.input :location %>
+  <%= f.input :location, id: 'performance_location' %>
   <%= f.input :price %>
   <%= f.input :description %>
   <%= f.input :photo, as: :file %>
