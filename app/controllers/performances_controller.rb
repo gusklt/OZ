@@ -3,7 +3,7 @@ class PerformancesController < ApplicationController
   before_action :set_performance, only: [:show, :edit, :update, :destroy]
 
   def index
-    @performances = Performance.all
+    @performances = policy_scope(Performance).order(created_at: :desc)
 
     # the `geocoded` scope filters only perforlances with coordinates (latitude & longitude)
     @markers = @performances.geocoded.map do |performance|
@@ -21,10 +21,12 @@ class PerformancesController < ApplicationController
 
   def new
     @performance = Performance.new
+    authorize @performance
   end
 
   def create
     @performance = Performance.new(performance_params)
+    authorize @performance
     @performance.user = current_user
     if @performance.save
       redirect_to performance_path(@performance)
@@ -54,6 +56,7 @@ class PerformancesController < ApplicationController
 
   def set_performance
     @performance = Performance.find(params[:id])
+    authorize @performance
   end
 
   def performance_params
