@@ -1,1 +1,5 @@
 <h1>Hello <%= @user.username %></h1>
+
+  <% if policy(booking).update? %>
+    <%= link_to 'Edit', performance_booking_path(booking) %>
+  <% end %>
