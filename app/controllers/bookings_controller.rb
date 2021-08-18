@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     authorize @booking
-    @booking.update(booking_params)
+    @booking.status = params[:value]
     if @booking.save
       redirect_to user_path
     else
