@@ -9,7 +9,9 @@ class PerformancesController < ApplicationController
     @markers = @performances.geocoded.map do |performance|
       {
         lat: performance.latitude,
-        lng: performance.longitude
+        lng: performance.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { performance: performance }),
+        # image_url: helpers.asset_url('../../assets/images/marker.png')
       }
     end
   end
