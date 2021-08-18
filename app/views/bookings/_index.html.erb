@@ -1,0 +1,7 @@
+<% @user.bookings.each do |booking| %>
+  <%= booking.date %>
+  <%= booking.status %>
+  <% if policy(booking).update? %>
+    <%= link_to 'Edit', performance_booking_path(booking) %>
+  <% end %>
+<% end %>

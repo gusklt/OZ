@@ -1,5 +1,10 @@
 <h1>Hello <%= @user.username %></h1>
 
-  <% if policy(booking).update? %>
-    <%= link_to 'Edit', performance_booking_path(booking) %>
-  <% end %>
+<% @user.bookings.each do |booking| %>
+<%= booking.status %>
+<%= booking.date %>
+<% end %>
+
+<% @user.performances.each do |performance| %>
+<%= performance.title %>
+<% end %>

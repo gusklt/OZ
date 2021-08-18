@@ -11,10 +11,9 @@
 
 <p><%= @performance.description %></p>
 
-
-
 <% if policy(Booking).create? %>
-  <%= link_to "New booking", new_performance_booking_path(:performance_id) %>
+  <%= link_to "New booking", new_performance_booking_path(params[:id]) %>
+<% end %>
 
 <% if policy(@performance).destroy? %>
   <%= link_to "Delete", @performance, method: :delete, data: { confirm: "Are you sure?" } %>
