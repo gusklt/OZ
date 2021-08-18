@@ -11,3 +11,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+h2, h3 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+}
