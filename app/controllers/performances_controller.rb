@@ -11,7 +11,7 @@ class PerformancesController < ApplicationController
         lat: performance.latitude,
         lng: performance.longitude,
         info_window: render_to_string(partial: "info_window", locals: { performance: performance }),
-        # image_url: helpers.asset_url('../../assets/images/marker.png')
+        image_url: helpers.asset_url('marker.png')
       }
     end
   end
