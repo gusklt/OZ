@@ -1,10 +1,94 @@
-<h1>Hello <%= @user.username %></h1>
-
-<% @user.bookings.each do |booking| %>
-<%= booking.status %>
-<%= booking.date %>
-<% end %>
-
-<% @user.performances.each do |performance| %>
-<%= performance.title %>
-<% end %>
+<div class="container">
+  <div style="text-align: center; border-bottom: 5px solid purple; margin-bottom: 16px;">
+    <h1><%= @user.username %></h1>
+    <h3>magician dashboard</h3>
+  </div>
+  <div>
+  <% if current_user.performances %>
+      <h2> Your performances </h2>
+      <% current_user.performances.each do |performance| %>
+        <div class="card" style="width: 18rem;">
+        <% if performance.photo.attached? %>
+          <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
+        <% else %>
+            <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= performance.title %></h5>
+          <p class="card-text"><%= performance.description %></p>
+          <%= performance.location %>
+          <%= performance.price %>
+          <%= performance.average_rating %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+  <% if current_user.bookings %>
+    <h2> Your bookings </h2>
+    <div class="row">
+      <% current_user.bookings.each do |booking| %>
+        <div class="small_card">
+          <% if booking.performance.photo.attached? %>
+            <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
+          <% else %>
+            <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
+          <% end %>
+          <div class="card-infos">
+            <h2><%= booking.performance.title %></h2>
+            <p><%= booking.date %></p>
+          </div>
+          <div class="card-status">
+            <div>
+              <% if booking.status == 'accepted' %>
+              <p style="background-color: green;"> <%= booking.status %> </p>
+              <% elsif booking.status == 'pending'%>
+                <p style="background-color: yellow;"><%= booking.status%> </p>
+              <% else %>
+                <p style="background-color: red;"><%= booking.status %> </p>
+              <% end %>
+            </div>
+            <div>
+               <%= link_to "accept", performance_booking_path(booking.performance, id: booking.id, value: "accepted"), method: :patch %>
+               <%= link_to "decline", performance_booking_path(booking.performance, id: booking.id, value: "declined"), method: :patch %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div style="text-align: center; border-bottom: 5px solid purple; margin-bottom: 16px;">
+      <h1><%= @user.username %></h1>
+      <h3>customer dashboard</h3>
+    </div>
+    <div>
+      <% if current_user.bookings %>
+        <h2> Your bookings </h2>
+      <div class="row">
+        <% current_user.bookings.each do |booking| %>
+          <div class="small_card">
+            <% if booking.performance.photo.attached? %>
+              <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
+            <% else %>
+              <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
+            <% end %>
+            <div class="card-infos">
+              <h2><%= booking.performance.title %></h2>
+            <p><%= booking.date %></p>
+          </div>
+          <div class="card-status">
+            <div>
+              <% if booking.status == 'accepted' %>
+              <p style="background-color: green;"> <%= booking.status %> </p>
+              <% elsif booking.status == 'pending'%>
+                <p style="background-color: yellow;"><%= booking.status%> </p>
+              <% else %>
+                <p style="background-color: red;"><%= booking.status %> </p>
+              <% end %>
+            </div>
+          </div>
+         </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
