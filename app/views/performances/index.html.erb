@@ -1,24 +1,27 @@
-<div class="cards">
-  <% @performances.each do |performance| %>
-  <div class="card" style="width: 18rem;">
-    <% if performance.photo.attached? %>
-      <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
-    <% else %>
-        <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
-    <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= performance.title %></h5>
-      <p class="card-text"><%= performance.description %></p>
-      <%= performance.location %>
-      <%= performance.price %>
+<div class="index_container">
+  <div class="cards">
+    <% @performances.each do |performance| %>
+    <div class="card" style="width: 18rem;">
+      <% if performance.photo.attached? %>
+        <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
+      <% else %>
+          <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= performance.title %></h5>
+        <p class="card-text"><%= performance.description %></p>
+        <%= performance.location %>
+        <%= performance.price %>
 
-      <%= performance.average_rating %>
+        <%= performance.average_rating %>
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
-<div id="map"
-  style="width: 300px; height: 100%;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  <div id="map"
+    style="width: 400px; height: 100%;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
 </div>
