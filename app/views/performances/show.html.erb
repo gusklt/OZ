@@ -11,4 +11,6 @@
 
 <p><%= @performance.description %></p>
 
-<%= link_to "Delete", @performance, method: :delete, data: { confirm: "Are you sure?" } %>
+<% if policy(@performance).destroy? %>
+  <%= link_to "Delete", @performance, method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>

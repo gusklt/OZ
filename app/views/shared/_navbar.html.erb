@@ -19,6 +19,11 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item">
+          <% if policy(Performance).create? %>
+            <%= link_to "Be a magician", new_performance_path, class: "nav-link" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
           <%= link_to "Dashboard", user_path(current_user), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
