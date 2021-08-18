@@ -4,16 +4,8 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    create?
-  end
-
   def update?
     record.user == user
-  end
-
-  def edit?
-    update?
   end
 
   class Scope < Scope
