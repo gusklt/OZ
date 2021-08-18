@@ -35,6 +35,8 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v10'
     });
 
+    map.addControl(new mapboxgl.NavigationControl());
+
     const markers = JSON.parse(mapElement.dataset.markers);
     // markers.forEach((marker) => {
     //   new mapboxgl.Marker()
@@ -44,9 +46,8 @@ const initMapbox = () => {
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
   }
-
-
-
 };
+
+
 
 export { initMapbox };
