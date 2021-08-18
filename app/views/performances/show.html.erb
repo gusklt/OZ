@@ -27,8 +27,10 @@
       <p><%= @performance.price %> €</p>
     </div>
     <hr>
-    <% if policy(Booking).create? %>
-      <%= render 'bookings/form', performance: @performance, booking: @booking %>
-    <% end %>
+    <div id="performance-booking-dates">
+      <% if policy(Booking).create? %>
+        <%= render 'bookings/form', performance: @performance, booking: @booking %>
+      <% end %>
+    </div>
   </div>
 </div>
