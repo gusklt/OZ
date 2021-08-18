@@ -8,7 +8,7 @@
           <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
       <% end %>
       <div class="card-body">
-        <h5 class="card-title"><%= performance.title %></h5>
+        <h5 class="card-title"><%= link_to performance.title, performance_path(performance.id) %></h5>
         <p class="card-text"><%= performance.description %></p>
         <%= performance.location %>
         <%= performance.price %>

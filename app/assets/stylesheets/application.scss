@@ -20,3 +20,11 @@ h2 {
   font-size: 40px;
   font-weight: bold;
 }
+
+a {
+  text-decoration: none;
+  color: $purple;
+  &:hover{
+    text-decoration: none;
+  }
+}
