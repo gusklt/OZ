@@ -1,21 +1,29 @@
-<% if @performance.photo.attached? %>
-  <%= cl_image_tag @performance.photo.key, height: 300, width: 1500, crop: :fill %>
-<% else %>
-  <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" width=150 height=150>
-<% end %>
 
-<h3><%= @performance.title %></h3>
+  <% if @performance.photo.attached? %>
+    <%= cl_image_tag @performance.photo.key, height: 300, width: 1500, crop: :fill, class: 'perf-banner' %>
+  <% else %>
+    <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="performance banner" class='perf-banner'>
+  <% end %>
 
-<%= @performance.location %>
-<%= @performance.price %> €
+<div class="container mt-3">
+<div class="presentation">
+    <h2><%= @performance.title %></h2>
+    <div class="informations">
+      <p><i class="fas fa-map-marker"></i> <%= @performance.location %></p>
+      <p><%= @performance.price %> €</p>
+    </div>
+    <p><%= @performance.description %></p>
 
-<p><%= @performance.description %></p>
 
-<% if policy(Booking).create? %>
-  <%= link_to "New booking", new_performance_booking_path(params[:id]) %>
-<% end %>
 
-<% if policy(@performance).destroy? %>
-  <%= link_to "Delete", @performance, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% if policy(@performance).destroy? %>
+      <%= link_to "Delete", @performance, method: :delete, data: { confirm: "Are you sure?" } %>
 
-<% end %>
+    <% end %>
+  </div>
+  <div class="booking-form">
+    <% if policy(Booking).create? %>
+      <%= render 'bookings/form', performance: @performance, booking: @booking %>
+    <% end %>
+  </div>
+</div>

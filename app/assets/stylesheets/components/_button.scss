@@ -1,0 +1,21 @@
+.purple-button {
+  background-color: $purple;
+  border-radius: 35px;
+  padding: 4px 16px;
+  color: white;
+  font-family: 'Open Sans Condensed';
+  font-weight: bolder;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  &:hover {
+      background-color: $cream;
+    }
+}
+
+.center-button {
+  text-align: center;
+  width: fit-content;
+  margin: 16px auto;
+}
