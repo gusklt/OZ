@@ -41,4 +41,7 @@
 
 .card-status {
   margin-left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
