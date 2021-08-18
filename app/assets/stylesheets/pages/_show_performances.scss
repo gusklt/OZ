@@ -7,7 +7,7 @@
 
 .container-show {
     display: flex;
-    margin: 0 auto;
+    margin: 24px auto;
     width: 1000px;
 }
 
@@ -17,6 +17,7 @@
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  height: fit-content;
   form {
   width: max-content;
   display: flex;
