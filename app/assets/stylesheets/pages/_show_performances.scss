@@ -5,19 +5,26 @@
   object-position: center;
 }
 
-.container {
-  display: flex;
-}
-
-.informations {
-  font-weight: bolder;
-  display: flex;
-  justify-content: space-between;
+.container-show {
+    display: flex;
+    margin: 0 auto;
+    width: 1000px;
 }
 
 .booking-form {
   margin-left: 16px;
+  background: white;
+  padding: 30px;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
   form {
   width: max-content;
+  display: flex;
+  flex-direction: column;
   }
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
 }
