@@ -10,7 +10,11 @@
     color: white;
   }
   &:hover {
+      border: 1px solid $purple;
       background-color: $cream;
+      a {
+        color: $purple;
+      }
     }
 }
 
