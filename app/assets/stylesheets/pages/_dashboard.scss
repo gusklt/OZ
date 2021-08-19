@@ -1,25 +1,54 @@
-.main_container {
-  width: 100%;
-  margin-top: 70px;
-}
-
 .small_container {
-  margin: auto;
+  margin: 24px auto;
   width: 70%;
+  border-radius: 4px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
 }
 
 .cards_container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
+  display: flex;
+  padding: 16px;
+
+   a {
+      color: black;
+    }
+
+    :hover{
+      text-decoration: none;
+      color: $purple;
+  }
+}
+
+.card {
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px 4px 0px 0px;
+  }
+}
+
+
+.trash {
+  position: relative;
+  margin: 4px;
 }
 
 .title {
-  text-align: center;
+  align-items: flex-end;
   border-bottom: 5px solid purple;
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: white;
+  padding: 16px 16px 0px 16px;
 }
 
 .toggle_button {

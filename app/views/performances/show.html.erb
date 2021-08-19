@@ -1,36 +1,55 @@
-
-  <% if @performance.photo.attached? %>
-    <%= cl_image_tag @performance.photo.key, height: 300, width: 1500, crop: :fill, class: 'perf-banner' %>
-  <% else %>
-    <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="performance banner" class='perf-banner'>
-  <% end %>
-
-<div class="container-show mt-3">
-<div class="presentation">
+<div class="main_container">
+  <div class="container">
     <h2><%= @performance.title %></h2>
-
-    <p><i class="fas fa-map-marker"></i> <%= @performance.location %></p>
-
-    <p><%= @performance.description %></p>
-
-    <h3>The magician</h3>
-    <%= image_tag "https://avatars.githubusercontent.com/u/84907809?v=4", class: "avatar-bordered" %>
-    <%= @performance.user.username.capitalize %>
-
-    <% if policy(@performance).destroy? %>
-      <%= link_to "Delete", @performance, method: :delete, data: { confirm: "Are you sure?" } %>
+    <% if @performance.photo.attached? %>
+      <%= cl_image_tag @performance.photo.key, height: 300, width: 1500, crop: :fill, class: 'perf-banner' %>
+    <% else %>
+      <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="performance banner" class='perf-img'>
     <% end %>
-  </div>
-  <div class="booking-form">
-    <div class="price">
-      <strong>Price</strong>
-      <p><%= @performance.price %> €</p>
-    </div>
-    <hr>
-    <div id="performance-booking-dates">
-      <% if policy(Booking).create? %>
-        <%= render 'bookings/form', performance: @performance, booking: @booking %>
-      <% end %>
+
+    <div class="container-show">
+      <div class="row">
+
+          <div class="col-12 col-lg-8">
+            <div class="presentation">
+
+              <p><i class="fas fa-map-marker"></i> <%= @performance.location %></p>
+
+              <p><%= @performance.description %></p>
+
+              <h3>The magician</h3>
+              <%= image_tag "https://avatars.githubusercontent.com/u/84907809?v=4", class: "avatar-bordered" %>
+              <%= @performance.user.username.capitalize %>
+              <% if policy(@performance).destroy? %>
+                <div class="delete-button">
+                  <%= link_to @performance, method: :delete, data: { confirm: "Are you sure?" } do %>
+                    <%= icon('far', 'trash-alt') %> Delete this show
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-4">
+            <% if @performance.user == current_user %>
+              <div></div>
+            <% else %>
+              <div class="booking-form">
+                <div class="price">
+                  <strong>Price</strong>
+                  <p><%= @performance.price %> €</p>
+                </div>
+                <hr>
+                <div id="performance-booking-dates">
+                  <% if policy(Booking).create? %>
+                    <%= render 'bookings/form', performance: @performance, booking: @booking %>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+      </div>
     </div>
   </div>
 </div>

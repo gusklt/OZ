@@ -18,9 +18,9 @@ class BookingsController < ApplicationController
     @booking.user = current_user
 
     if @booking.save
-      redirect_to performances_path
+      redirect_to user_path(current_user)
     else
-      render 'new'
+      redirect_to performance_path(@performance)
     end
   end
 

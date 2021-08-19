@@ -39,7 +39,7 @@ class PerformancesController < ApplicationController
     if @performance.save
       redirect_to performance_path(@performance)
     else
-      redirect_to new_performance_path
+      render :new
     end
   end
 

@@ -10,9 +10,9 @@
       <div class="card-product-info">
         <h5 class="card-title"><%= link_to performance.title, performance_path(performance.id) %></h5>
         <p class="card-text"><%= performance.description %></p>
-        <%= performance.location %>
-        <%= performance.price %>
-        <%= performance.average_rating %>
+        <div class="card-location"><%= icon('fas', 'map-marker')%> <%= performance.location %></div>
+        <div class="card-price"><%= performance.price %>€</div>
+        <%# <%= performance.average_rating %>
       </div>
     </div>
     <% end %>
