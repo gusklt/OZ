@@ -31,18 +31,22 @@
           </div>
 
           <div class="col-12 col-lg-4">
-            <div class="booking-form">
-              <div class="price">
-                <strong>Price</strong>
-                <p><%= @performance.price %> €</p>
+            <% if @performance.user == current_user %>
+              <div></div>
+            <% else %>
+              <div class="booking-form">
+                <div class="price">
+                  <strong>Price</strong>
+                  <p><%= @performance.price %> €</p>
+                </div>
+                <hr>
+                <div id="performance-booking-dates">
+                  <% if policy(Booking).create? %>
+                    <%= render 'bookings/form', performance: @performance, booking: @booking %>
+                  <% end %>
+                </div>
               </div>
-              <hr>
-              <div id="performance-booking-dates">
-                <% if policy(Booking).create? %>
-                  <%= render 'bookings/form', performance: @performance, booking: @booking %>
-                <% end %>
-              </div>
-            </div>
+            <% end %>
           </div>
 
       </div>
