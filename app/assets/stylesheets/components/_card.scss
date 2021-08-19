@@ -31,6 +31,24 @@
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.card-product-info {
+  padding: 8px;
+}
+
+.card-title {
+  text-overflow: ellipsis;
+  height: 25px;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.card-text {
+  text-overflow: ellipsis;
+  height: 30px;
+  overflow: hidden;
+}
+
+.card-location, .card-price {
+  font-size: 14px;
+  margin-top: 2px;
 }
