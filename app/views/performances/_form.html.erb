@@ -1,8 +1,8 @@
 <%= simple_form_for performance do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :location, id: 'performance_location' %>
-  <%= f.input :price %>
+  <%= f.input :title, class: 'purple-border' %>
+  <%= f.input :description, class: 'purple-border' %>
+  <%= f.input :location, class: 'purple-border', id: 'performance_location' %>
+  <%= f.input :price, class: 'purple-border' %>
   <%= f.input :photo, as: :file %>
   <div class="btn-center">
     <%= f.button :submit, class: 'purple-button' %>
