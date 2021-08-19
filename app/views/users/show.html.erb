@@ -7,8 +7,8 @@
         <h3>magician dashboard</h3>
       </div>
       <h2> Your performances </h2>
+      <div class="cards_container">
       <% current_user.performances.each do |performance| %>
-        <div class="cards_container">
         <%= link_to performance do %>
           <div class="card" style="width: 18rem;">
             <% if performance.photo.attached? %>
@@ -30,7 +30,6 @@
                   <% end %>
               </div>
             </div>
-
           </div>
           </div>
         <% end %>
