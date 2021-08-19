@@ -2,9 +2,18 @@ class PerformancesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_performance, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @performances = policy_scope(Performance).order(created_at: :desc)
+  # rubocop:disable Metrics/MethodLength
 
+  def index
+    if params["search"].present?
+      if params["search"]["query"].present?
+        Performance.algolia_reindex!
+        @performances = policy_scope(Performance).order(created_at: :desc)
+        return @performances = @performances.algolia_search(params["search"]["query"])
+      end
+    else
+      @performances = policy_scope(Performance).order(created_at: :desc)
+    end
     # the `geocoded` scope filters only perforlances with coordinates (latitude & longitude)
     @markers = @performances.geocoded.map do |performance|
       {
