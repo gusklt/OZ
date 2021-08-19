@@ -16,11 +16,13 @@
               <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
             <% end %>
             <div class="card-body">
-              <h5 class="card-title"><%= performance.title %></h5>
-              <p class="card-text"><%= performance.description %></p>
-              <%= performance.location %>
-              <%= performance.price %>
-              <%= performance.average_rating %>
+              <%= link_to performance do %>
+                <h5 class="card-title"><%= performance.title %></h5>
+                <p class="card-text"><%= performance.description %></p>
+                <%= performance.location %>
+                <%= performance.price %>
+                <%= performance.average_rating %>
+              <% end %>
             </div>
           </div>
         </div>
@@ -76,9 +78,9 @@
           </div>
         <% end %>
     <% end %>
-<% end %>
-
+    <% end %>
   </div>
+
   <!-- you're a customer -->
   <div class="small_container" >
     <% if current_user.bookings %>
