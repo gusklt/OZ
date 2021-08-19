@@ -1,2 +1,14 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+
+<div class="main_container">
+  <div class="container">
+    <h2 class="text-center"> How was the Show ?</h2>
+    <%= simple_form_for review do |f| %>
+      <%= f.input :comment %>
+      <%= f.input :rating %>
+      <%# booking_id? %>
+      <div class="btn-center">
+        <%= f.button :submit, class: 'purple-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>
