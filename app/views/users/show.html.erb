@@ -38,7 +38,7 @@
                 <% end %>
                 <div class="card-infos">
                   <h2><%= booking.performance.title %></h2>
-                  <p><%= booking.performance.user %></p>
+                  <p><%= booking.user.username %></p>
                   <p><%= booking.date %></p>
                 </div>
                 <div class="card-status">
@@ -99,6 +99,7 @@
                 <% end %>
                 <div class="card-infos">
                   <h2><%= booking.performance.title %></h2>
+                  <p><%= booking.performance.user.username %></p>
                   <p><%= booking.date %></p>
                 </div>
                 <div class="card-status">
