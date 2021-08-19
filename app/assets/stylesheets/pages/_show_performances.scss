@@ -17,12 +17,14 @@
 }
 
 .booking-form {
-  margin-left: 16px;
   background: white;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
   height: fit-content;
+  width: fit-content;
+  object-position: center;
+  margin: 0 auto;
     form {
       width: max-content;
       display: flex;
