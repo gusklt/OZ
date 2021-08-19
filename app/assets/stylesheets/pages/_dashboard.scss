@@ -4,22 +4,32 @@
 }
 
 .small_container {
-  margin: auto;
+  margin: 24px auto;
   width: 70%;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
 }
 
 .cards_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+  padding: 16px;
 }
 
 .title {
-  text-align: center;
+  align-items: flex-end;
   border-bottom: 5px solid purple;
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
+  border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: white;
+  padding: 16px 16px 0px 16px;
 }
 
 .toggle_button {
