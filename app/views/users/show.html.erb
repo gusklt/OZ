@@ -22,7 +22,15 @@
                 <%= performance.location %>
                 <%= performance.price %>
                 <%= performance.average_rating %>
+                <div class="trash">
+                  <% if policy(performance).destroy? %>
+                    <%= link_to performance, method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <%= icon('far', 'trash-alt') %>
+                    <% end %>
+                  <% end %>
+              </div>
             </div>
+
           </div>
           </div>
         <% end %>
@@ -30,6 +38,7 @@
           <h2> Your bookings </h2>
           <div class="row">
             <% performance.bookings.each do |booking| %>
+            <% if booking.present? && booking.date > Time.now %>
               <div class="small_card">
                 <% if booking.performance.photo.attached? %>
                   <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
@@ -75,6 +84,7 @@
                 </div>
               </div>
             <% end %>
+            <% end %>
           </div>
         <% end %>
     <% end %>
@@ -91,7 +101,8 @@
           <h2> Your bookings </h2>
           <div class="row">
             <% current_user.bookings.each do |booking| %>
-              <div class="small_card">
+              <% if booking.present? && booking.date > Time.now %>
+                <div class="small_card">
                 <% if booking.performance.photo.attached? %>
                   <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
                 <% else %>
@@ -113,7 +124,10 @@
                     <% end %>
                   </div>
                 </div>
-              </div>
+                </div>
+
+
+              <% end %>
             <% end %>
           </div>
       </div>
