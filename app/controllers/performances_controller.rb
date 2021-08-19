@@ -6,16 +6,14 @@ class PerformancesController < ApplicationController
 
   def index
     if params["search"].present?
-      if params["search"]["query"].present?
-        Performance.algolia_reindex!
-        @performances = policy_scope(Performance).order(created_at: :desc)
-        return @performances = @performances.algolia_search(params["search"]["query"])
-      end
+      Performance.algolia_reindex!
+      @performances = policy_scope(Performance).order(created_at: :desc)
+      @performances = @performances.algolia_search(params["search"]["query"])
     else
       @performances = policy_scope(Performance).order(created_at: :desc)
     end
     # the `geocoded` scope filters only perforlances with coordinates (latitude & longitude)
-    @markers = @performances.geocoded.map do |performance|
+    @markers = @performances.map do |performance|
       {
         lat: performance.latitude,
         lng: performance.longitude,
