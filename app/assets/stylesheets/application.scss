@@ -30,6 +30,7 @@ h5 {
 }
 
 a {
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=120438"), pointer;
   text-decoration: none;
   color: $purple;
   &:hover{
@@ -40,5 +41,5 @@ a {
 }
 
 body {
-  cursor: url(hand.cur), pointer;
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=120438"), pointer;
 }
