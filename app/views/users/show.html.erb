@@ -40,6 +40,7 @@
           <h2> Your bookings </h2>
           <div class="row">
             <% performance.bookings.each do |booking| %>
+
             <% if booking.present? && booking.date > Time.now %>
               <div class="small_card">
                 <% if booking.performance.photo.attached? %>
@@ -93,6 +94,10 @@
       </div>
     <% end %>
   </div>
+  <%# On a créé des routes pour les reviews %>
+  <%# Faire un lien, qui pointe vers la route new_performance_booking_review_path(booking) %>
+  <%# Cela nous renvoie un formulaire %>
+  <%# Action du formulaire pointe vers l'action create du controller reviews %>
 
   <!-- you're a customer -->
   <div class="container" >
