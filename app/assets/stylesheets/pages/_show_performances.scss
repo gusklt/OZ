@@ -7,9 +7,9 @@
 }
 
 .container-show {
-    display: flex;
-    margin-top: 24px;
-    margin-bottom: 24px;
+  display: flex;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 .presentation {
@@ -17,17 +17,19 @@
 }
 
 .booking-form {
-  margin-left: 16px;
   background: white;
   padding: 30px;
   border-radius: 4px;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
   height: fit-content;
-  form {
-  width: max-content;
-  display: flex;
-  flex-direction: column;
-  }
+  width: fit-content;
+  object-position: center;
+  margin: 0 auto;
+    form {
+      width: max-content;
+      display: flex;
+      flex-direction: column;
+    }
 }
 
 .price {
