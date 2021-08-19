@@ -7,8 +7,8 @@
         <h3>magician dashboard</h3>
       </div>
       <h2> Your performances </h2>
+      <div class="cards_container">
       <% current_user.performances.each do |performance| %>
-        <div class="cards_container">
         <%= link_to performance do %>
           <div class="card" style="width: 18rem;">
             <% if performance.photo.attached? %>
@@ -22,6 +22,13 @@
                 <%= performance.location %>
                 <%= performance.price %>
                 <%= performance.average_rating %>
+                <% if policy(performance).destroy? %>
+                  <div class="trash">
+                    <%= link_to performance, method: :delete, data: { confirm: "Are you sure?" } do %>
+                      <%= icon('far', 'trash-alt') %>
+                    <% end %>
+                  </div>
+                <% end %>
             </div>
           </div>
           </div>
@@ -30,6 +37,7 @@
           <h2> Your bookings </h2>
           <div class="row">
             <% performance.bookings.each do |booking| %>
+            <% if booking.present? && booking.date > Time.now %>
               <div class="small_card">
                 <% if booking.performance.photo.attached? %>
                   <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
@@ -75,6 +83,7 @@
                 </div>
               </div>
             <% end %>
+            <% end %>
           </div>
         <% end %>
     <% end %>
@@ -91,7 +100,8 @@
           <h2> Your bookings </h2>
           <div class="row">
             <% current_user.bookings.each do |booking| %>
-              <div class="small_card">
+              <% if booking.present? && booking.date > Time.now %>
+                <div class="small_card">
                 <% if booking.performance.photo.attached? %>
                   <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
                 <% else %>
@@ -113,7 +123,10 @@
                     <% end %>
                   </div>
                 </div>
-              </div>
+                </div>
+
+
+              <% end %>
             <% end %>
           </div>
       </div>
