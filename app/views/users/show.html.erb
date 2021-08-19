@@ -22,13 +22,13 @@
                 <%= performance.location %>
                 <%= performance.price %>
                 <%= performance.average_rating %>
-                <div class="trash">
-                  <% if policy(performance).destroy? %>
+                <% if policy(performance).destroy? %>
+                  <div class="trash">
                     <%= link_to performance, method: :delete, data: { confirm: "Are you sure?" } do %>
                       <%= icon('far', 'trash-alt') %>
                     <% end %>
-                  <% end %>
-              </div>
+                  </div>
+                <% end %>
             </div>
           </div>
           </div>

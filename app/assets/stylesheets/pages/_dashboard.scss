@@ -1,6 +1,7 @@
 .small_container {
   margin: 24px auto;
   width: 70%;
+  border-radius: 4px;
 }
 .row {
   display: flex;
@@ -24,9 +25,11 @@
 
 .card {
   border-radius: 4px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   img {
     width: 100%;
     object-fit: cover;
+    border-radius: 4px 4px 0px 0px;
   }
 }
 
