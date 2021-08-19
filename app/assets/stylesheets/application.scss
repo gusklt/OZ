@@ -15,7 +15,7 @@
 @import "pages/index";
 @import "components/small_card";
 
-h2, h3 {
+h2, h3, h4, h5 {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
@@ -24,10 +24,21 @@ h2 {
   font-weight: bold;
 }
 
+h5 {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 a {
   text-decoration: none;
   color: $purple;
   &:hover{
     text-decoration: none;
+    color: $purple;
+    opacity: 0.6;
   }
+}
+
+i {
+  color: $purple;
 }
