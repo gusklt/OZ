@@ -1,3 +1,5 @@
+// navbar
+
 .navbar-lewagon {
   justify-content: space-between;
   background: $purple;
@@ -7,7 +9,6 @@
   right: 0;
   left: 0;
 }
-
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -17,10 +18,6 @@
   flex-direction: row;
   color: $cream;
 }
-
-// .navbar-lewagon .navbar-brand img {
-//   width: 40px;
-// }
 
 .navbar-light .navbar-nav .nav-link {
   color: $cream;
@@ -32,3 +29,29 @@
 }
 
 // #F5E6E0
+// SearchBar
+
+.search-bar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bar .btn {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 8px;
+}
+
+.search-bar .form-control {
+  height: 3.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #E7E7E7;
+}
+
+.search-bar .form-control:focus {
+  border: 1px solid #1EDD88;
+  outline: none !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
