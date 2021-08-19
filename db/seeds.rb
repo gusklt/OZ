@@ -91,8 +91,7 @@ end
 
 booking1 = Booking.new(
   date: DateTime.now,
-  status: ['accepted', 'pending', 'declined'].sample,
-  performance_id: 2
+  status: ['accepted', 'pending', 'declined'].sample
 )
 booking1.user = user1
 booking1.performance = performances.sample
@@ -100,9 +99,7 @@ booking1.save
 
 booking2 = Booking.new(
   date: DateTime.now,
-  status: ['accepted', 'pending', 'declined'].sample,
-  user_id: 2,
-  performance_id: 3
+  status: ['accepted', 'pending', 'declined'].sample
 )
 booking2.user = user2
 booking2.performance = performances.sample
@@ -110,9 +107,7 @@ booking2.save
 
 booking3 = Booking.new(
   date: DateTime.now,
-  status: ['accepted', 'pending', 'declined'].sample,
-  user_id: 3,
-  performance_id: 5
+  status: ['accepted', 'pending', 'declined'].sample
 )
 booking3.user = user3
 booking3.performance = performances.sample
@@ -120,9 +115,7 @@ booking3.save
 
 booking4 = Booking.new(
   date: DateTime.now,
-  status: ['accepted', 'pending', 'declined'].sample,
-  user_id: 4,
-  performance_id: 2
+  status: ['accepted', 'pending', 'declined'].sample
 )
 booking4.user = user4
 booking4.performance = performances.sample
