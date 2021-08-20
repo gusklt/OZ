@@ -9,9 +9,10 @@ class Performance < ApplicationRecord
 
   has_one_attached :photo
 
-  include AlgoliaSearch
-
-  algoliasearch do
-    attributes :title, :description, :user # :location
-  end
+  include PgSearch::Model
+  pg_search_scope :search_by_address,
+    against: [ :location ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end

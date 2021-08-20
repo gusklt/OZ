@@ -3,25 +3,25 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 const fitMapToMarkers = (map, markers) => {
   const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
+    markers.forEach(marker => bounds.extend([marker.lng, marker.lat]));
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.info_window); // add this
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window); // add this
 
-    const element = document.createElement('div');
-    element.className = 'marker';
-    element.style.backgroundImage = `url('${marker.image_url}')`;
-    element.style.backgroundSize = 'contain';
-    element.style.width = '30px';
-    element.style.height = '30px';
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '30px';
+      element.style.height = '30px';
 
-    new mapboxgl.Marker(element)
-      .setLngLat([marker.lng, marker.lat])
-      .setPopup(popup) // add this
-      .addTo(map);
+      new mapboxgl.Marker(element)
+        .setLngLat([marker.lng, marker.lat])
+        .setPopup(popup) // add this
+        .addTo(map);
   });
 };
 
@@ -43,8 +43,10 @@ const initMapbox = () => {
     //     .setLngLat([marker.lng, marker.lat])
     //     .addTo(map);
     // });
-    addMarkersToMap(map, markers);
-    fitMapToMarkers(map, markers);
+    if (markers.length > 0) {
+      addMarkersToMap(map, markers);
+      fitMapToMarkers(map, markers);
+    }
   }
 };
 
