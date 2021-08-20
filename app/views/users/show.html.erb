@@ -59,7 +59,7 @@
                 <% end %>
                 <div class="card-infos">
                   <h2 ><%= booking.performance.title %></h2>
-                  <p><%= booking.user.username %></p>
+                  <p><%= booking.user.username.capitalize %></p>
                   <p><%= booking.date %></p>
                   <div class="card-status">
                   <%= render 'booking_status', booking: booking %>
@@ -93,7 +93,10 @@
               <% end %>
               <div class="card-infos">
                 <h2><%= booking.performance.title %></h2>
-                <p><%= booking.user.username %></p>
+                <div style="display: flex; justify-content: flex-start; align-content: center;">
+                  <%= image_tag "https://avatars.githubusercontent.com/u/84907809?v=4", class: "avatar-bordered", style: "width: 16px; height: 16px;"%>
+                  <p><%= booking.user.username.capitalize %></p>
+                </div>
                 <p><%= booking.date %></p>
                 <div>
                   <% if booking.status == 'accepted' %>
