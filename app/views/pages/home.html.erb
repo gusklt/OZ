@@ -42,14 +42,30 @@
   <div class="magicians">
     <h3 class="text-center">Our best magician</h3>
     <div class="cards_container">
-      <% @users.each do |user| %>
-        <div class="magician-card">
-          <%= image_tag "https://avatars.githubusercontent.com/u/84907809?v=4", class: "avatar-bordered" %>
-          <div class="card-product-info">
-            <%= user.username.capitalize %>
-          </div>
+      <div class="magician-card">
+        <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1607630183/iqsisg4v7frikbvxikcv.jpg", class: "avatar-bordered" %>
+        <div class="card-product-info">
+          <%= @users[0].username.capitalize %>
         </div>
-      <% end %>
+      </div>
+      <div class="magician-card">
+        <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1563188935/aecpacu35pytf2niyqea.jpg", class: "avatar-bordered" %>
+        <div class="card-product-info">
+          <%= @users[1].username.capitalize %>
+        </div>
+      </div>
+      <div class="magician-card">
+        <%= image_tag "https://avatars.githubusercontent.com/u/71978544?v=4", class: "avatar-bordered" %>
+        <div class="card-product-info">
+          <%= @users[2].username.capitalize %>
+        </div>
+      </div>
+      <div class="magician-card">
+        <%= image_tag "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1611653847/y5go6enykr9xmood7w9a.jpg", class: "avatar-bordered" %>
+        <div class="card-product-info">
+          <%= @users[3].username.capitalize %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
