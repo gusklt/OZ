@@ -17,14 +17,12 @@
 
 .title {
   align-items: flex-end;
-  border-bottom: 5px solid purple;
+  border-bottom: 5px solid $purple;
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
   border-radius: 4px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  color: white;
-  padding: 16px 16px 0px 16px;
+  color: $purple;
 }
 
 .toggle_button {
