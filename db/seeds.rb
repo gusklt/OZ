@@ -31,7 +31,7 @@ end
 
 user1 = User.create(
   email: 'test@test.fr',
-  username: 'test',
+  username: 'David_copperfield',
   password: '123456',
   password_confirmation: '123456'
 )
@@ -56,13 +56,51 @@ user4 = User.create(
   password: 'halliwell',
   password_confirmation: 'halliwell'
 )
-if User.count == 4
-  puts "4 users created"
+
+user5 = User.create(
+  email: 'fakir@ava.com',
+  username: 'fakir_of_ava',
+  password: '123456',
+  password_confirmation: '123456'
+)
+user6 = User.create(
+  email: 'flom@justin.com',
+  username: 'justin_flom',
+  password: '123456',
+  password_confirmation: '123456'
+)
+user7 = User.create(
+  email: 'frank@garcia.com',
+  username: 'frank_garcia',
+  password: '123456',
+  password_confirmation: '123456'
+)
+user8 = User.create(
+  email: 'law@austin.com',
+  username: 'austin.law',
+  password: '123456',
+  password_confirmation: '123456'
+)
+user9 = User.create(
+  email: 'tina@lenert.com',
+  username: 'tina',
+  password: '123456',
+  password_confirmation: '123456'
+)
+user10 = User.create(
+  email: 'camile@fork.com',
+  username: 'camile',
+  password: '123456',
+  password_confirmation: '123456'
+)
+
+if User.count == 10
+  puts "10 users created"
 else
   puts "error creating users"
 end
 
-users = [user1, user2, user3, user4]
+users = [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10]
 performances = []
 locations = ['155	Rue Commandant Caroline Aigle	13090	Aix-en-Provence', "7	Rue de l'Abbé Bremond	13090	Aix-en-Provence",
           "1 Rue Achille Emperaire	13090	Aix-en-Provence", "1	Rue des Alizés	13090	Aix-en-Provence",
@@ -72,10 +110,10 @@ locations = ['155	Rue Commandant Caroline Aigle	13090	Aix-en-Provence', "7	Rue d
 n = 0
 10.times do
   performance = Performance.new(
-    title: Faker::TvShows::StrangerThings.quote,
-    description: Faker::Lorem.paragraphs(number: 2),
+    title: Faker::Games::LeagueOfLegends.summoner_spell,
+    description: Faker::Games::LeagueOfLegends.quote,
     location: locations[n],
-    price: rand(25..50)
+    price: rand(50..250)
   )
   performance.user = users.sample
   performance.save
