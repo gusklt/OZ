@@ -1,9 +1,31 @@
 <div class="banner">
   <div class="container">
-    <h1>WELCOME TO  OZ</h1>
-    <p>Let the magic happen..</p>
+    <h1 id="main-title"></h1>
+    <p id="baseline"></p>
   </div>
 </div>
+
+<div class="container">
+  <div class="text-presentation text-center">
+    <p> <i class="fas fa-hat-wizard"></i><br>
+    Want to see magic? We are here for you. <br>
+    Book your own magic show in a few minutes!</p>
+  </div>
+
+  <% @performances.each do |performance| %>
+    <%= performance.title %>
+    <%= link_to performance.title, performance_path(performance.id) %>
+    <%= performance.description %>
+    <%= icon('fas', 'map-marker')%> <%= performance.location %>
+    <%= performance.price %>€
+  <% end %>
+
   <div class="purple-button center-button">
     <%= link_to 'Browse performances', performances_path %>
   </div>
+
+  <% @users.each do |user| %>
+    <%= user.username %>
+  <% end %>
+</div>
+<% console %>

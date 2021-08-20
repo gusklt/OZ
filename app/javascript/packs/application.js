@@ -29,6 +29,7 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { calendar } from "../plugins/init_flatpicker";
+import { typed_baseline, typed_title } from "../plugins/init_typed";
 
 // import { initSelect2 } from '../components/init_select2';
 
@@ -36,4 +37,6 @@ document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
   calendar();
+  typed_baseline();
+  typed_title();
 })
