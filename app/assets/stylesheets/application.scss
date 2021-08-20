@@ -14,6 +14,7 @@
 @import "components/index";
 @import "pages/index";
 @import "components/small_card";
+@import "components/magic";
 
 h2, h3, h4, h5 {
   font-family: 'Open Sans Condensed', sans-serif;
@@ -30,6 +31,7 @@ h5 {
 }
 
 a {
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=120438"), pointer;
   text-decoration: none;
   color: $purple;
   &:hover{
@@ -37,4 +39,8 @@ a {
     color: $purple;
     opacity: 0.6;
   }
+}
+
+body {
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=120438"), pointer;
 }

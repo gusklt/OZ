@@ -11,7 +11,7 @@
       <h2> Your performances </h2>
       <div class="cards_container">
         <% current_user.performances.each do |performance| %>
-          <div class="card" style="width: 18rem;">
+          <div class="card magic">
             <%= link_to performance do %>
             <!-- performance picture -->
               <% if performance.photo.attached? %>

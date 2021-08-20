@@ -1,0 +1,104 @@
+.magic {
+  position:relative;
+  --r:75px;
+}
+
+.magic i{
+  color:$purple;
+  filter:grayscale(100%);
+}
+.magic:hover i{
+  animation:change 1s forwards;
+}
+
+
+@keyframes change{
+  50% {
+   transform:scale(0);
+   filter:grayscale(100%);
+  }
+  51% {
+    filter:grayscale(0%);
+  }
+  100% {
+    transform:scale(1);
+    filter:grayscale(0%);
+  }
+}
+/**/
+
+.magic:before {
+  content:"";
+  position:absolute;
+  top:calc(50% - var(--r));
+  left:calc(50% - var(--r));
+  width:calc(2*var(--r));
+  height:calc(2*var(--r));
+  border-radius:50%;
+  border:solid rgb(117, 0, 108) var(--r);
+  transform:scale(0);
+  box-sizing:border-box;
+}
+
+.magic:hover::before {
+  border-width:0;
+  transform:scale(1);
+  transition:
+    transform 0.5s,
+    border-width 0.5s 0.5s;
+}
+
+/**/
+
+.magic::after,
+.magic i::after{
+  content:"";
+  position:absolute;
+  width: calc(4*var(--r));
+  height:calc(4*var(--r));
+  left:calc(50% - 2*var(--r));
+  top: calc(50% - 2*var(--r));
+  --c1:radial-gradient(circle,rgb(71, 0, 104) 50%   ,transparent 60%);
+  --c2:radial-gradient(circle,rgb(82, 0, 97) 50%,transparent 60%);
+  background:
+    /*4 reds*/
+    var(--c1),var(--c1),var(--c1),var(--c1),
+    /*4 oranges*/
+    var(--c2),var(--c2),var(--c2),var(--c2);
+
+  background-size:calc(var(--r)/3) calc(var(--r)/3);
+  background-position:
+    calc(50% - var(--r)) calc(50% - var(--r)),
+    calc(50% + var(--r)) calc(50% - var(--r)),
+    calc(50% - var(--r)) calc(50% + var(--r)),
+    calc(50% + var(--r)) calc(50% + var(--r)),
+    calc(50% +  0px) calc(50% + var(--r)*1.414),
+    calc(50% + var(--r)*1.414) calc(50% +  0px),
+    calc(50% - var(--r)*1.414) calc(50% +  0px),
+    calc(50% +  0px) calc(50% - var(--r)*1.414);
+  background-repeat:no-repeat;
+  transform:scale(0);
+}
+.magic i::after {
+  background-size:calc(var(--r)/5) calc(var(--r)/5);
+  transform:rotate(55deg) scale(0);
+}
+
+.magic:hover:after {
+  transform:scale(1);
+  opacity:0;
+  background-size:0 0;
+  transition:
+    transform 0.5s 0.5s,
+    opacity 0.4s 0.9s,
+    background-size 0.5s 0.9s;
+}
+.magic:hover i:after {
+  transform:rotate(55deg) scale(1);
+  opacity:0;
+  background-size:0 0;
+  transition:
+    transform 0.5s 0.5s,
+    opacity 0.4s 0.9s,
+    background-size 0.5s 0.9s;
+}
