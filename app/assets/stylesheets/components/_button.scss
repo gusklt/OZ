@@ -10,7 +10,11 @@
     color: white;
   }
   &:hover {
+      border: 1px solid $purple;
       background-color: $cream;
+      a {
+        color: $purple;
+      }
     }
 }
 
@@ -30,6 +34,10 @@
   opacity: 0.6 ;
     a {
       color: #DF2E2E;
+      &:hover {
+        opacity: 1;
+        color: #DF2E2E;
+      }
     }
     &:hover {
       opacity: 1;
