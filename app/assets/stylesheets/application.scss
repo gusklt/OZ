@@ -37,13 +37,19 @@ h5 {
 a {
   text-decoration: none;
   color: $purple;
+  cursor: url('http://www.rw-designer.com/cursor-extern.php?id=120438'), pointer;
   &:hover{
     text-decoration: none;
     color: $purple;
     opacity: 0.6;
+    cursor: url('http://www.rw-designer.com/cursor-extern.php?id=120438'), pointer;
   }
 }
 
 body {
+  cursor: url('http://www.rw-designer.com/cursor-extern.php?id=120438'), pointer;
+}
+
+.button {
   cursor: url('http://www.rw-designer.com/cursor-extern.php?id=120438'), pointer;
 }
