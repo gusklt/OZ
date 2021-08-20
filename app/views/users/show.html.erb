@@ -22,16 +22,18 @@
               <div class="card-body">
                 <h5 class="card-title"><%= performance.title %></h5>
                 <p class="card-text"><%= performance.description %></p>
-                <%= performance.location %>
-                <%= performance.price %>
+                <p class="card.location"><%= performance.location %></p>
+                <div class="cards_bottom">
+                  <p class="card.price"><%= performance.price %></p>
                 <%#= performance.average_rating %>
-                <% if policy(performance).destroy? %>
-                  <div class="trash">
-                    <%= link_to performance, method: :delete, data: { confirm: "Are you sure?" } do %>
-                      <%= icon('far', 'trash-alt') %>
-                    <% end %>
-                  </div>
-                <% end %>
+                  <% if policy(performance).destroy? %>
+                    <div class="trash">
+                      <%= link_to performance, method: :delete, data: { confirm: "Are you sure?" } do %>
+                        <%= icon('far', 'trash-alt') %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             <% end %>
           </div>
@@ -50,13 +52,14 @@
                   <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
                 <% end %>
                 <div class="card-infos">
-                  <h2><%= booking.performance.title %></h2>
+                  <h2 ><%= booking.performance.title %></h2>
                   <p><%= booking.user.username %></p>
                   <p><%= booking.date %></p>
-                </div>
-                <div class="card-status">
+                  <div class="card-status">
                   <%= render 'booking_status', booking: booking %>
+                  </div>
                 </div>
+
               </div>
             <% end %>
           <% end %>
@@ -85,10 +88,8 @@
               <% end %>
               <div class="card-infos">
                 <h2><%= booking.performance.title %></h2>
-                <p><%= booking.performance.user.username %></p>
+                <p><%= booking.user.username %></p>
                 <p><%= booking.date %></p>
-              </div>
-              <div class="card-status">
                 <div>
                   <% if booking.status == 'accepted' %>
                     <p style="color: green;"> <%= icon('fas', 'thumbs-up')%> <%= booking.status %> </p>
@@ -99,6 +100,7 @@
                   <% end %>
                 </div>
               </div>
+
             </div>
           <% end %>
         <% end %>
