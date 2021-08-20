@@ -49,7 +49,28 @@
             <% end %>
           </div>
 
+          <% @performance.bookings. each do |booking| %>
+              <% booking.reviews.each do |review| %>
+                <% if booking.reviews.blank? %>
+                   <div class="col-12 col-lg-8" id="reviews">
+                        Be the first to leave a review for <%= @performance.title %>
+
+                    </div>
+                  <% else %>
+                    <h4><%= review %></h4>
+
+                <% end %>
+              <% end %>
+          <% end %>
+
+          <div class="col-12 col-lg-8" id="reviews">
+              Be the first to leave a review for <%= @performance.title %>
+
+          </div>
+
       </div>
     </div>
   </div>
 </div>
+
+<% console %>
