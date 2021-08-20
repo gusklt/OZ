@@ -16,7 +16,7 @@
   <!-- performances -->
   <div class="cards_container">
     <% @performances.each do |performance| %>
-        <div class="card">
+        <div class="card magic">
           <%= link_to performance do %>
             <% if performance.photo.attached? %>
               <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
