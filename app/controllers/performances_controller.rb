@@ -70,4 +70,6 @@ class PerformancesController < ApplicationController
   def performance_params
     params.require(:performance).permit(:title, :location, :description, :price, :photo)
   end
+
+  # rubocop:enable Metrics/MethodLength
 end
