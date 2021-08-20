@@ -5,7 +5,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.performance.user == user
   end
 
   class Scope < Scope
