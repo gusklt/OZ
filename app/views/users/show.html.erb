@@ -118,28 +118,23 @@
                       <%= simple_form_for([ booking.performance, booking, @review ]) do |f| %>
                       <%= f.input :comment, as: :text %>
                       <%= f.input :rating, as: :integer %>
-
-
+                      <%= f.button :submit, class: "purple-button modal-button" %>
+                      <% end %>
                     </div>
-                    <div class="modal-footer color-modal">
-                      <button type="submit" class="purple-button modal-button"><%= f.button :submit %></button>
-                    </div>
+                  </div>
+                </div>
+
+                <div class="card-status">
+                  <div>
+                    <% if booking.status == 'accepted' %>
+                      <p style="color: green;"> <%= icon('fas', 'thumbs-up')%> <%= booking.status %> </p>
+                    <% elsif booking.status == 'pending'%>
+                      <p style="color: orange;"> <%= icon('fas', 'exclamation-triangle')%> <%= booking.status %> </p>
+                    <% else %>
+                      <p style="color: red;"> <%= icon('fas', 'thumbs-down')%> <%= booking.status %> </p>
                     <% end %>
                   </div>
                 </div>
-              </div>
-
-              <div class="card-status">
-                <div>
-                  <% if booking.status == 'accepted' %>
-                    <p style="color: green;"> <%= icon('fas', 'thumbs-up')%> <%= booking.status %> </p>
-                  <% elsif booking.status == 'pending'%>
-                    <p style="color: orange;"> <%= icon('fas', 'exclamation-triangle')%> <%= booking.status %> </p>
-                  <% else %>
-                    <p style="color: red;"> <%= icon('fas', 'thumbs-down')%> <%= booking.status %> </p>
-                  <% end %>
-                </div>
-              </div>
 
             </div>
           <% end %>
