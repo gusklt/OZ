@@ -10,18 +10,3 @@
 @import "main_container";
 @import "reviews_card";
 @import "modal_button";
-
-
-.index_container {
-  display: flex;
-}
-
-.cards {
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 70vw;
-  margin-top: 50px;
-}

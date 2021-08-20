@@ -1,9 +1,55 @@
 <div class="banner">
   <div class="container">
-    <h1>WELCOME TO  OZ</h1>
-    <p>Let the magic happen..</p>
+    <h1 id="main-title"></h1>
+    <p id="baseline"></p>
   </div>
 </div>
+
+<div class="container">
+  <!-- Text presentation -->
+  <div class="text-presentation text-center">
+    <p> <i class="fas fa-hat-wizard"></i><br>
+    Want to see magic? We are here for you. <br>
+    Book your own magic show in a few minutes!</p>
+  </div>
+
+  <!-- performances -->
+  <div class="cards_container">
+    <% @performances.each do |performance| %>
+        <div class="card">
+          <%= link_to performance do %>
+            <% if performance.photo.attached? %>
+              <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
+            <% else %>
+              <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= performance.title %></h5>
+              <p class="card-text"><%= performance.description %></p>
+              <p class="card.location"><%= icon('fas', 'map-marker')%> <%= performance.location %></p>
+              <p class="card.price"><%= performance.price %>€</p>
+            </div>
+          <% end %>
+        </div>
+    <% end %>
+  </div>
+
   <div class="purple-button center-button">
     <%= link_to 'Browse performances', performances_path %>
   </div>
+
+  <!-- magicians presentations-->
+  <div class="magicians">
+    <h3 class="text-center">Our best magician</h3>
+    <div class="cards_container">
+      <% @users.each do |user| %>
+        <div class="magician-card">
+          <%= image_tag "https://avatars.githubusercontent.com/u/84907809?v=4", class: "avatar-bordered" %>
+          <div class="card-product-info">
+            <%= user.username.capitalize %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

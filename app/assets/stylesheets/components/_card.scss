@@ -1,7 +1,15 @@
+.cards {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70vw;
+  margin-top: 50px;
+}
 
 .card-product {
   overflow: hidden;
-
   width: 80%;
   background: $cream;
   box-shadow: 0 0 15px rgba(84, 5, 136, 0.5);
@@ -78,7 +86,6 @@
 
 .card {
   width: 23%;
-  position: absolute;
   border-radius: 4px;
   margin: 8px 8px 8px 8px;
   background: $cream;
@@ -103,4 +110,16 @@
   justify-content: space-between;
   align-self: flex-end;
   margin-bottom: 0px;
+}
+
+
+.magician-card {
+  background: $cream;
+  box-shadow: 0 0 15px rgba(84, 5, 136, 0.5);
+  display: flex;
+  margin: 24px;
+  border-radius: 5px;
+  width: 20%;
+  align-items: center;
+  padding: 8px;
 }

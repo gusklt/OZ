@@ -1,1 +1,15 @@
 // Specific CSS for your home-page
+.text-presentation {
+  margin: 24px 0;
+  font-size: 20px;
+  i {
+    font-size: 32px;
+    color: $purple;
+  }
+}
+
+.magicians {
+  border-top: 2px dotted $purple;
+  margin-top: 36px;
+  padding-top: 36px;
+}
