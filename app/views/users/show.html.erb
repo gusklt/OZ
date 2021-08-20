@@ -104,13 +104,12 @@
                     <% end %>
                   </div>
                 </div>
-
               </div>
-               <div class="card-status">
+              <div class="card-review">
                   <button type="button" class="btn btn-primary btn-review purple-button button-center" data-toggle="modal" data-target="#reviewsModal-<%= booking.id %>">
                     Add a review
                   </button>
-                </div>
+              </div>
               <div class="modal fade" id="reviewsModal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -129,7 +128,7 @@
                     </div>
                   </div>
                 </div>
-
+              </div>
             </div>
           <% end %>
         <% end %>
