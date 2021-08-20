@@ -2,8 +2,10 @@ class ReviewsController < ApplicationController
 
   def create
     @performance = Performance.find(params[:performance_id])
+    authorize @performance
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @review.performance = @performance
+    @review.booking = @booking
     if @review.save
       redirect_to performance_path(@performance)
     else
@@ -20,7 +22,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:comment, :rating)
   end
-
 end

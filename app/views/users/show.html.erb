@@ -35,15 +35,6 @@
               </div>
             <% end %>
           </div>
-<<<<<<< HEAD
-
-
-        <% if performance.bookings.present? %>
-          <h2> Your bookings </h2>
-          <div class="row">
-            <% performance.bookings.each do |booking| %>
-
-=======
         <% end %>
       </div>
     <!-- magician bookings -->
@@ -51,7 +42,6 @@
       <div class="cards_container">
         <% current_user.performances.each do |performance| %>
           <% performance.bookings.each do |booking| %>
->>>>>>> master
             <% if booking.present? && booking.date > Time.now %>
               <div class="small_card">
                 <% if booking.performance.photo.attached? %>
@@ -97,7 +87,38 @@
                 <h2><%= booking.performance.title %></h2>
                 <p><%= booking.performance.user.username %></p>
                 <p><%= booking.date %></p>
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewsModal-<%= booking.id %>">
+                  Add a review
+                </button>
+
               </div>
+
+              <div class="modal fade" id="reviewsModal-<%= booking.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">How was it, bitch ?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <%= simple_form_for([ booking.performance, booking, @review ]) do |f| %>
+                      <%= f.input :comment, as: :text %>
+                      <%= f.input :rating, as: :integer %>
+
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary"><%= f.button :submit %></button>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
               <div class="card-status">
                 <div>
                   <% if booking.status == 'accepted' %>

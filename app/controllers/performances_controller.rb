@@ -25,7 +25,6 @@ class PerformancesController < ApplicationController
 
   def show
     @booking = Booking.new
-    @review = Review.new
   end
 
   def new
