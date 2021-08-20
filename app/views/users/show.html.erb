@@ -40,13 +40,8 @@
         <% end %>
       </div>
     <!-- magician bookings -->
-      <% current_user.performances.each do |performance| %>
-          <% performance.bookings.each do |booking| %>
-            <% if booking.present? && booking.date > Time.now %>
-              <h3> Your bookings </h3>
-            <% end %>
-          <% end %>
-      <% end %>
+      <h3> Your bookings </h3>
+
       <div class="cards_container">
         <% current_user.performances.each do |performance| %>
           <% performance.bookings.each do |booking| %>
@@ -148,3 +143,5 @@
     <% end %>
   </div>
 </div>
+
+<% console %>
