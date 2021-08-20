@@ -11,8 +11,9 @@
       <h2> Your performances </h2>
       <div class="cards_container">
         <% current_user.performances.each do |performance| %>
-          <div class="card" style="width: 18rem;">
+          <div class="card magic">
             <%= link_to performance do %>
+            <!-- performance picture -->
               <% if performance.photo.attached? %>
                 <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
               <% else %>
@@ -23,7 +24,7 @@
                 <p class="card-text"><%= performance.description %></p>
                 <%= performance.location %>
                 <%= performance.price %>
-                <%= performance.average_rating %>
+                <%#= performance.average_rating %>
                 <% if policy(performance).destroy? %>
                   <div class="trash">
                     <%= link_to performance, method: :delete, data: { confirm: "Are you sure?" } do %>
@@ -34,6 +35,7 @@
               </div>
             <% end %>
           </div>
+<<<<<<< HEAD
 
 
         <% if performance.bookings.present? %>
@@ -41,6 +43,15 @@
           <div class="row">
             <% performance.bookings.each do |booking| %>
 
+=======
+        <% end %>
+      </div>
+    <!-- magician bookings -->
+      <h2> Your bookings </h2>
+      <div class="cards_container">
+        <% current_user.performances.each do |performance| %>
+          <% performance.bookings.each do |booking| %>
+>>>>>>> master
             <% if booking.present? && booking.date > Time.now %>
               <div class="small_card">
                 <% if booking.performance.photo.attached? %>
@@ -54,42 +65,11 @@
                   <p><%= booking.date %></p>
                 </div>
                 <div class="card-status">
-                  <div>
-                    <% if booking.status == 'accepted' %>
-                      <p style="color: green;"> <%= icon('fas', 'thumbs-up')%> <%= booking.status %> </p>
-                    <% elsif booking.status == 'pending'%>
-                      <p style="color: orange;"> <%= icon('fas', 'exclamation-triangle')%> <%= booking.status %> </p>
-                    <% else %>
-                      <p style="color: red;"> <%= icon('fas', 'thumbs-down')%> <%= booking.status %> </p>
-                    <% end %>
-                  </div>
-                  <div>
-                    <% if booking.status == 'accepted'%>
-                      <%= link_to performance_booking_path(booking.performance, id: booking.id, value: "declined"), method: :patch do %>
-                      <i class="fas fa-toggle-on" style="color:green; font-size: 24px; "></i>
-                      <% end %>
-                    <% elsif booking.status == 'declined'%>
-                      <%= link_to performance_booking_path(booking.performance, id: booking.id, value: "accepted"), method: :patch do %>
-                      <i class="fas fa-toggle-off" style="color:red; font-size: 24px; "></i>
-                      <% end %>
-                    <% elsif booking.status == 'pending' %>
-                      <div class="toggle_button">
-                        <%= link_to performance_booking_path(booking.performance, id: booking.id, value: "declined"), method: :patch do %>
-                          <i class="far fa-circle" style="color:orange; font-size: 12px; "></i>
-                        <% end %>
-                        <i class="fas fa-circle" style="color:white; font-size: 12px; "></i>
-                        <%= link_to performance_booking_path(booking.performance, id: booking.id, value: "accepted"), method: :patch do %>
-                          <i class="far fa-circle" style="color:orange; font-size: 12px; "></i>
-                        <% end %>
-                      </div>
-                    <% end %>
-                  </div>
+                  <%= render 'booking_status', booking: booking %>
                 </div>
               </div>
             <% end %>
-            <% end %>
-
-        <% end %>
+          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -102,39 +82,36 @@
         <h1><%= current_user.username %></h1>
         <h3>customer dashboard</h3>
       </div>
-          <h2> Your bookings </h2>
-          <div class="row">
-            <% current_user.bookings.each do |booking| %>
-              <% if booking.present? && booking.date > Time.now %>
-                <div class="small_card">
-                <% if booking.performance.photo.attached? %>
-                  <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
-                <% else %>
+  <!-- customer bookings -->
+      <h2> Your bookings </h2>
+      <div class="cards_container">
+        <% current_user.bookings.each do |booking| %>
+          <% if booking.present? && booking.date > Time.now %>
+            <div class="small_card">
+              <% if booking.performance.photo.attached? %>
+                <%= cl_image_tag booking.performance.photo.key, height: 165, width: 267, crop: :fit %>
+              <% else %>
                   <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
-                <% end %>
-                <div class="card-infos">
-                  <h2><%= booking.performance.title %></h2>
-                  <p><%= booking.performance.user.username %></p>
-                  <p><%= booking.date %></p>
-
-                </div>
-                <div class="card-status">
-                  <div>
-                    <% if booking.status == 'accepted' %>
-                      <p style="color: green;"> <%= icon('fas', 'thumbs-up')%> <%= booking.status %> </p>
-                    <% elsif booking.status == 'pending'%>
-                      <p style="color: orange;"> <%= icon('fas', 'exclamation-triangle')%> <%= booking.status %> </p>
-                    <% else %>
-                      <p style="color: red;"> <%= icon('fas', 'thumbs-down')%> <%= booking.status %> </p>
-                    <% end %>
-                  </div>
-                </div>
-                </div>
-
-
               <% end %>
-            <% end %>
-          </div>
+              <div class="card-infos">
+                <h2><%= booking.performance.title %></h2>
+                <p><%= booking.performance.user.username %></p>
+                <p><%= booking.date %></p>
+              </div>
+              <div class="card-status">
+                <div>
+                  <% if booking.status == 'accepted' %>
+                    <p style="color: green;"> <%= icon('fas', 'thumbs-up')%> <%= booking.status %> </p>
+                  <% elsif booking.status == 'pending'%>
+                    <p style="color: orange;"> <%= icon('fas', 'exclamation-triangle')%> <%= booking.status %> </p>
+                  <% else %>
+                    <p style="color: red;"> <%= icon('fas', 'thumbs-down')%> <%= booking.status %> </p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   </div>

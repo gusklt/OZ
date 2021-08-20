@@ -34,7 +34,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.status = params[:value]
     if @booking.save
-      redirect_to user_path
+      redirect_to user_path(current_user, anchor: "booking-#{@booking.id}")
     else
       redirect_to edit_performance_booking_path
     end
