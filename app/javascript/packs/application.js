@@ -36,6 +36,7 @@ import { calendar } from "../plugins/init_flatpicker"
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
   initAutocomplete();
-  typedJs();
+  const title = document.querySelector('#main-title');
+  if (title) {typedJs();};
   calendar();
 })
