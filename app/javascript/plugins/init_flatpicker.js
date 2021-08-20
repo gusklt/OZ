@@ -1,12 +1,14 @@
 import flatpickr from "flatpickr";
 
+const dateForm = document.getElementById('booking_date')
+
 const calendar = () => {
-  const dateForm = document.getElementById('booking_date')
-  if (dateForm) {
+  if  (dateForm) {
     flatpickr(dateForm, {
-      minDate: "today",
+      minDate: "today"
     });
   }
 }
+
 
 export { calendar };
