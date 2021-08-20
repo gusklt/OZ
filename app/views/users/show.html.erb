@@ -99,7 +99,7 @@
                 </div>
                 <p><%= booking.date %></p>
 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewsModal-<%= booking.id %>">
+                <button type="button" class="btn btn-primary btn-review purple-button button-center" data-toggle="modal" data-target="#reviewsModal-<%= booking.id %>">
                   Add a review
                 </button>
 
@@ -121,9 +121,8 @@
 
 
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary"><%= f.button :submit %></button>
+                    <div class="modal-footer color-modal">
+                      <button type="submit" class="purple-button modal-button"><%= f.button :submit %></button>
                     </div>
                     <% end %>
                   </div>
