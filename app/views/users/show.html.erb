@@ -2,13 +2,13 @@
   <!-- you're a magician -->
   <div class="container" >
     <!-- title bar -->
+    <!--<h1>Hello <%= current_user.username %></h1>-->
     <% if current_user.performances.present? %>
-      <div class="title" style="background-color: #4d01797e;" >
-        <h1><%= current_user.username %></h1>
-        <h3>magician dashboard</h3>
+      <div class="title"  >
+        <h2>magician dashboard</h2>
       </div>
     <!-- magician performances -->
-      <h2> Your performances </h2>
+      <h3> Your performances </h3>
       <div class="cards_container">
         <% current_user.performances.each do |performance| %>
           <div class="card magic">
@@ -40,7 +40,13 @@
         <% end %>
       </div>
     <!-- magician bookings -->
-      <h2> Your bookings </h2>
+      <% current_user.performances.each do |performance| %>
+          <% performance.bookings.each do |booking| %>
+            <% if booking.present? && booking.date > Time.now %>
+              <h3> Your bookings </h3>
+            <% end %>
+          <% end %>
+      <% end %>
       <div class="cards_container">
         <% current_user.performances.each do |performance| %>
           <% performance.bookings.each do |booking| %>
@@ -71,12 +77,11 @@
   <!-- you're a customer -->
   <div class="container" >
     <% if current_user.bookings.present? %>
-      <div class="title" style="background-color: #4d01797e;">
-        <h1><%= current_user.username %></h1>
-        <h3>customer dashboard</h3>
+      <div class="title">
+        <h2>customer dashboard</h2>
       </div>
   <!-- customer bookings -->
-      <h2> Your bookings </h2>
+      <h3> Your bookings </h3>
       <div class="cards_container">
         <% current_user.bookings.each do |booking| %>
           <% if booking.present? && booking.date > Time.now %>
