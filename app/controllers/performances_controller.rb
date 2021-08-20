@@ -6,9 +6,8 @@ class PerformancesController < ApplicationController
 
   def index
     if params["search"].present?
-      Performance.algolia_reindex!
       @performances = policy_scope(Performance).order(created_at: :desc)
-      @performances = @performances.algolia_search(params["search"]["query"])
+      @performances = @performances.search_by_address(params['search']['query'])
     else
       @performances = policy_scope(Performance).order(created_at: :desc)
     end

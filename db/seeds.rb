@@ -8,6 +8,13 @@
 require 'faker'
 require 'csv'
 
+Review.delete_all
+if Review.count.zero?
+  puts "All review have been destroy"
+else
+  puts "error deleting reviews"
+end
+
 Booking.delete_all
 if Booking.count.zero?
   puts "All booking have been destroy"
