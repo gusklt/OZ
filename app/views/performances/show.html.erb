@@ -58,6 +58,13 @@
                 <p><%= review.rating %></p>
               <% end %>
             <% end %>
+            <div class="review-form">
+              <%= simple_form_for([ @performance, @booking, @review ]) do |f| %>
+              <%= f.input :content, as: :text %>
+              <%= f.input :rating, as: :integer %>
+              <%= f.button :submit %>
+              <% end %>
+            </div>
           </div>
 
       </div>
