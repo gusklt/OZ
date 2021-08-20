@@ -60,3 +60,47 @@
   color: $purple;
   }
 }
+
+.cards_container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16px;
+
+   a {
+      color: black;
+    }
+
+    :hover{
+      text-decoration: none;
+      color: $purple;
+  }
+}
+
+.card {
+  width: 23%;
+  position: absolute;
+  border-radius: 4px;
+  margin: 8px 8px 8px 8px;
+  background: $cream;
+  box-shadow: 0 0 15px rgba(84, 5, 136, 0.5);
+  height: auto;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px 4px 0px 0px;
+  }
+}
+
+.card-body{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.cards_bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+  margin-bottom: 0px;
+}
