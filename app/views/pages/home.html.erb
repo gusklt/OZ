@@ -6,35 +6,50 @@
 </div>
 
 <div class="container">
+  <!-- Text presentation -->
   <div class="text-presentation text-center">
     <p> <i class="fas fa-hat-wizard"></i><br>
     Want to see magic? We are here for you. <br>
     Book your own magic show in a few minutes!</p>
   </div>
 
-  <div class="cards_container">
-    <% @performances.each do |performance| %>
-      <div class="card">
-        <%= link_to performance do %>
-          <% if performance.photo.attached? %>
-            <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
-          <% else %>
-            <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
+  <!-- performances carroussel -->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="carousel slide multi-item-carousel" id="theCarousel">
+        <div class="carousel-inner">
+          <% @performances.each do |performance| %>
+            <div class="item active">
+              <div class="col-xs-4">
+                <div class="card">
+                  <%= link_to performance do %>
+                    <% if performance.photo.attached? %>
+                      <%= cl_image_tag performance.photo.key, height: 165, width: 267, crop: :fit %>
+                    <% else %>
+                      <img src="https://res.cloudinary.com/dmp0gq5lk/image/upload/v1629214993/matt-flores-NpgN1gXdlSw-unsplash_tqyr0l.jpg" alt="" height=165>
+                    <% end %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= performance.title %></h5>
+                      <p class="card-text"><%= performance.description %></p>
+                      <p class="card.location"><%= icon('fas', 'map-marker')%> <%= performance.location %></p>
+                      <p class="card.price"><%= performance.price %>€</p>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><%= performance.title %></h5>
-            <p class="card-text"><%= performance.description %></p>
-            <p class="card.location"><%= icon('fas', 'map-marker')%> <%= performance.location %></p>
-            <p class="card.price"><%= performance.price %>€</p>
-          </div>
-        <% end %>
+        </div>
+        <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+        <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
       </div>
-    <% end %>
+    </div>
   </div>
+
   <div class="purple-button center-button">
     <%= link_to 'Browse performances', performances_path %>
   </div>
-
+  <!-- magicians presentations -->
   <div class="magicians">
     <h3 class="text-center">Our best magician</h3>
     <div class="cards_container">
